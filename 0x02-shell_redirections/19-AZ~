@@ -1,2 +1,0 @@
-#!/bin/bash
-tr "[A,c]""[Z,e]"
