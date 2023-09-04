@@ -1,0 +1,1 @@
+this dirctory holds the answer of all 0x02. Shell, I/O Redirections and filters project 
