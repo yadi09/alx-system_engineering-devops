@@ -1,2 +1,2 @@
-#!/bash/bin
+#!/bin/bash
 echo $PATH | tr ":" " " | wc -w
