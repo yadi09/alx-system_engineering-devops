@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#Bash script that displays
+#The content of the current directory
+#In a list format
+
+list=$(find . -type f| cut -d "-" -f 2-)
+
+for i in $list; do
+    echo "$i"
+done
