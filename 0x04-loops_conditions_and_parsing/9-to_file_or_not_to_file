@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#Bash script that gives you information about the school file.
+
+fileName="school"
+
+if [ -e $fileName ]; then
+echo "school file exists"
+if [ -s $fileName ]; then
+echo "school file is not empty"
+else
+echo "school file is empty"
+fi
+else
+echo "school file does not exist"
+fi
+
+if [ -f $fileName ]; then
+echo "school is a regular file"
+fi
