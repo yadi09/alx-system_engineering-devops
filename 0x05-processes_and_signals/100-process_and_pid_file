@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 #Bash script that:
 #Creates the file /var/run/myscript.pid containing its PID
 #Displays To infinity and beyond indefinitely
