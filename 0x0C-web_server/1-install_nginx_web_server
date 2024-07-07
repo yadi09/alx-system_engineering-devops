@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # servers are the piece of software generating and serving HTML pages
 
 sudo apt update
