@@ -1,0 +1,11 @@
+#!/bin/bash
+# servers are the piece of software generating and serving HTML pages
+
+sudo apt update
+sudo apt-get -y install nginx
+service nginx start
+sudo su
+ufw allow "Nginx HTTP"
+echo "Hello World!\n" > /var/www/html/index.nginx-debian.html
+service nginx restart
+exit
