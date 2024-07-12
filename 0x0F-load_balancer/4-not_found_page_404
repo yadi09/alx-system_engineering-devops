@@ -19,7 +19,4 @@ location = /error_404.html {\
 \	 internal;\
 }' /etc/nginx/sites-available/default
 
-sed -i "/listen 80 default_server;/a\
-\    add_header X-Served-By $hostname;" /etc/nginx/sites-available/default
-
 sudo service nginx restart
