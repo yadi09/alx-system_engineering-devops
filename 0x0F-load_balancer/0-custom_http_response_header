@@ -6,9 +6,6 @@ sudo apt-get -y install nginx
 ufw allow "Nginx HTTP"
 echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
 
-sudo chown -R "$USER":"$USER" /var/www/html
-sudo chmod -R 755 /var/www
-
 sed -i '37i\rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
 
 printf "Ceci n'est pas une page\n" > /var/www/html/error_404.html
