@@ -3,29 +3,12 @@
 
 apt-get -y install software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-1.8
-
-# Update the System
-sudo apt-get -y update
+apt-get -y update
 apt-get -y install haproxy=1.8.\*
-
-# Firewall Rules
-sudo ufw allow 80
-
-# Configure HAProxy
-sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
-sudo bash -c 'cat >> /etc/haproxy/haproxy.cfg <<EOL
-
-
-frontend http_front
-	 bind *:80
-	 default_backend main_backend
-
-backend main_backend
-	balance roundrobin
-	server web-01 52.201.211.145:80 check
-	server web-02 54.209.162.93:80 check
-EOL'
-
-# Start and Enable HAProxy
-sudo systemctl start haproxy
-sudo systemctl enable haproxy
+sed -i '/errorfile 504/a listen thelaura' /etc/haproxy/haproxy.cfg
+sed -i '/listen thelaura/a         bind :80' /etc/haproxy/haproxy.cfg
+sed -i '/bind :80/a         mode http' /etc/haproxy/haproxy.cfg
+sed -i '/mode http/a         server 2154-web-01 104.196.50.234:80 check' /etc/haproxy/haproxy.cfg
+sed -i '/server 2154-web-01 104.196.50.234:80 check/a         server 2154-web-02 35.237.11.53:80 check' /etc/haproxy/haproxy.cfg
+sed -i '/#EXTRAOPTS="-de -m 16"/a ENABLED=1' /etc/default/haproxy
+service haproxy start
