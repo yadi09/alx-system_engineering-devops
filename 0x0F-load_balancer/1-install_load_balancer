@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # a script Install and configure HAproxy on your lb-01 server.
 
-# Update the System
-sudo apt-get update
-sudo apt-get upgrade -y
+apt-get -y install software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-1.8
 
-# Install HAProxy
-sudo apt-get install haproxy -y
+# Update the System
+sudo apt-get -y update
+apt-get -y install haproxy=1.8.\*
 
 # Firewall Rules
 sudo ufw allow 80
