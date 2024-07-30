@@ -21,4 +21,4 @@ if __name__ == "__main__":
         len(todos)
     ))
     for t in title:
-        print("\t" + t)
+        print("\t {}".format(t))
