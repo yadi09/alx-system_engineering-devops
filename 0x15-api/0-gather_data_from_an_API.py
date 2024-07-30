@@ -15,7 +15,7 @@ if __name__ == "__main__":
     ).read().decode('utf-8'))
     title = [tit.get('title') for tit in todos if tit.get('completed') is True]
 
-    print("Employee {} is done with tasks({}/{})".format(
+    print("Employee {} is done with tasks({}/{}):".format(
         user_info['name'],
         len(title),
         len(todos)
