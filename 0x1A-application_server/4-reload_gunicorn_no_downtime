@@ -1,0 +1,23 @@
+#!/bin/bash
+
+PID_FILES=("/run/gunicorn.pid" "/tmp/gunicorn.pid" "/var/run/gunicorn.pid")
+
+for PID_FILE in "${PID_FILES[@]}"; do
+    if [ -f "$PID_FILE" ]; then
+        echo "Found Gunicorn PID file: $PID_FILE"
+        break
+    fi
+done
+
+if [ ! -f "$PID_FILE" ]; then
+    echo "Gunicorn PID file not found!"
+    exit 1
+fi
+
+MASTER_PID=$(cat "$PID_FILE")
+
+kill -USR2 $MASTER_PID
+
+sleep 5
+
+echo "Gunicorn has been gracefully reloaded."
